@@ -1,10 +1,476 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>JayStructure</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JayStructure | Jay Sah</title>
+  <meta name="description" content="Jay Sah is a Sydney-based site engineer in high-rise construction, sharing practical insights from structural coordination, QA, compliance, and on-site delivery." />
+  <meta property="og:title" content="JayStructure | Jay Sah" />
+  <meta property="og:description" content="Site Engineer | High-Rise Construction Sydney | MEng Structural Engineering | Sharing what I learn on-site." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jaystructure.com/" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
+  <style>
+    /* Art direction: high-rise engineering portfolio -> precise, confident, metropolitan.
+       Palette: cool neutral with safety-orange accent inspired by site environments.
+       Typography: Cabinet Grotesk + Satoshi for a sharp professional presence.
+       Density: balanced, spacious in hero and controlled in content sections. */
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.6rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg: #f3f5f7;
+      --color-surface: #fbfcfd;
+      --color-surface-2: #eef2f5;
+      --color-surface-offset: #e6ebef;
+      --color-border: #cbd3da;
+      --color-divider: #d7dde3;
+      --color-text: #16202a;
+      --color-text-muted: #5f6d7a;
+      --color-text-faint: #8d99a5;
+      --color-text-inverse: #f6f8fa;
+      --color-primary: #d46d1f;
+      --color-primary-hover: #b85d18;
+      --color-primary-active: #94480f;
+      --color-primary-highlight: #f0dfcf;
+      --shadow-sm: 0 1px 2px rgba(8, 20, 32, 0.06);
+      --shadow-md: 0 10px 30px rgba(8, 20, 32, 0.09);
+      --shadow-lg: 0 20px 60px rgba(8, 20, 32, 0.14);
+      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.9rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --content-default: 1100px;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #11161c;
+      --color-surface: #171d24;
+      --color-surface-2: #1d242d;
+      --color-surface-offset: #242c36;
+      --color-border: #313a45;
+      --color-divider: #2a323c;
+      --color-text: #e8edf2;
+      --color-text-muted: #a8b2bd;
+      --color-text-faint: #7e8894;
+      --color-text-inverse: #16202a;
+      --color-primary: #f19a4d;
+      --color-primary-hover: #ffac63;
+      --color-primary-active: #ffc58d;
+      --color-primary-highlight: #35281f;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #11161c;
+        --color-surface: #171d24;
+        --color-surface-2: #1d242d;
+        --color-surface-offset: #242c36;
+        --color-border: #313a45;
+        --color-divider: #2a323c;
+        --color-text: #e8edf2;
+        --color-text-muted: #a8b2bd;
+        --color-text-faint: #7e8894;
+        --color-text-inverse: #16202a;
+        --color-primary: #f19a4d;
+        --color-primary-hover: #ffac63;
+        --color-primary-active: #ffc58d;
+        --color-primary-highlight: #35281f;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: none; text-size-adjust: none; }
+    body {
+      min-height: 100dvh; line-height: 1.6; background: var(--color-bg); color: var(--color-text);
+      font-family: var(--font-body); font-size: var(--text-base);
+      background-image: radial-gradient(circle at top right, rgba(212,109,31,0.12), transparent 24%), linear-gradient(180deg, transparent, rgba(0,0,0,0.02));
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { border: 0; background: none; color: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    .skip-link {
+      position: absolute; left: var(--space-4); top: -100px; z-index: 100;
+      background: var(--color-primary); color: #fff; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+    }
+    .skip-link:focus { top: var(--space-4); }
+    .container { width: min(calc(100% - 2rem), var(--content-default)); margin-inline: auto; }
+    .section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2); padding: 0.4rem 0.8rem;
+      border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text-muted);
+      font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 86%, transparent); border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { border-color: var(--color-divider); }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      min-height: 76px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700; letter-spacing: 0.02em; }
+    .brand-mark {
+      width: 2.6rem; height: 2.6rem; border-radius: var(--radius-md); background: var(--color-text); color: var(--color-text-inverse);
+      display: grid; place-items: center; box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg { width: 1.55rem; height: 1.55rem; }
+    .nav-links { display: flex; align-items: center; gap: var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted); }
+    .nav-links a:hover { color: var(--color-text); }
+    .theme-toggle {
+      width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: var(--color-surface);
+    }
+    .hero {
+      padding-top: clamp(var(--space-12), 7vw, var(--space-20));
+      min-height: calc(100dvh - 76px); display: grid; align-items: center;
+    }
+    .hero-grid { display: grid; gap: var(--space-10); }
+    .hero-copy h1 {
+      font-family: var(--font-display); font-size: var(--text-2xl); line-height: 0.98; letter-spacing: -0.04em;
+      max-width: 11ch; margin-top: var(--space-5);
+    }
+    .hero-copy p {
+      margin-top: var(--space-6); max-width: 62ch; color: var(--color-text-muted);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8); }
+    .btn {
+      min-height: 48px; padding: 0.9rem 1.2rem; border-radius: var(--radius-full); font-size: var(--text-sm);
+      font-weight: 700; transition: all var(--transition-interactive);
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    }
+    .btn-primary { background: var(--color-primary); color: #fff; box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
+    .btn-secondary:hover { border-color: var(--color-text-faint); }
+    .hero-panel {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 96%, transparent), var(--color-surface-2));
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-8);
+      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .hero-panel::before {
+      content: ""; position: absolute; inset: auto -10% 0 auto; width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,109,31,0.22), transparent 70%);
+    }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-6); }
+    .metric {
+      padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-bg) 40%, transparent);
+      border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+    }
+    .metric strong { display: block; font-size: var(--text-lg); font-family: var(--font-display); }
+    .metric span { color: var(--color-text-muted); font-size: var(--text-xs); }
+    .section-head { display: grid; gap: var(--space-3); margin-bottom: var(--space-8); }
+    .section-head h2 { font-size: var(--text-xl); line-height: 1.05; font-family: var(--font-display); letter-spacing: -0.03em; }
+    .section-head p { color: var(--color-text-muted); max-width: 62ch; }
+    .about-grid, .expertise-grid, .project-grid, .contact-grid { display: grid; gap: var(--space-6); }
+    .card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl);
+      padding: var(--space-6); box-shadow: var(--shadow-sm);
+    }
+    .card h3 { font-size: var(--text-lg); line-height: 1.1; margin-bottom: var(--space-3); }
+    .card p, .card li { color: var(--color-text-muted); }
+    .card ul { list-style: none; display: grid; gap: var(--space-3); }
+    .card li { position: relative; padding-left: 1.1rem; }
+    .card li::before {
+      content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--color-primary);
+      position: absolute; left: 0; top: 0.6rem;
+    }
+    .quote {
+      border-left: 3px solid var(--color-primary); padding-left: var(--space-5); color: var(--color-text);
+      font-size: var(--text-lg); line-height: 1.45;
+    }
+    .timeline { display: grid; gap: var(--space-4); }
+    .timeline-item { padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-border); }
+    .timeline-item span { display: inline-block; font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .pill {
+      padding: 0.65rem 0.95rem; background: var(--color-primary-highlight); color: var(--color-text);
+      border-radius: var(--radius-full); font-size: var(--text-sm); border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
+    }
+    .cta {
+      padding: clamp(var(--space-8), 6vw, var(--space-16)); border-radius: calc(var(--radius-xl) + 0.25rem);
+      background: linear-gradient(135deg, var(--color-text), color-mix(in srgb, var(--color-text) 82%, var(--color-primary) 18%));
+      color: var(--color-text-inverse); box-shadow: var(--shadow-lg);
+    }
+    .cta p { color: color-mix(in srgb, var(--color-text-inverse) 75%, transparent); max-width: 60ch; }
+    .cta .btn-secondary { background: transparent; color: var(--color-text-inverse); border-color: color-mix(in srgb, var(--color-text-inverse) 20%, transparent); }
+    .site-footer {
+      padding: var(--space-8) 0 var(--space-12); color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+      .about-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+      .expertise-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-grid { grid-template-columns: 1fr auto; align-items: center; }
+    }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; padding-block: var(--space-4); }
+      .nav-links { flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; }
+      .hero-panel { padding: var(--space-6); }
+      .metric-grid { grid-template-columns: 1fr; }
+      .hero-copy h1 { max-width: 12ch; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
 </head>
 <body>
-  <h1>JayStructure is live</h1>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="JayStructure home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 18L12 6l7 12" />
+            <path d="M8 18h8" />
+            <path d="M10 14h4" />
+          </svg>
+        </span>
+        <span>JayStructure</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Focus</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Sydney, NSW · High-rise construction</span>
+          <h1>Jay Sah builds clarity from the complexity of site delivery.</h1>
+          <p>
+            Site Engineer at ALAND with a Master of Engineering in Structural Engineering from UTS, sharing practical lessons from high-rise construction, on-site coordination, quality control, and compliance-driven project delivery.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/jaysahuts/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+            <a class="btn btn-secondary" href="#contact">Work with JayStructure</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Professional snapshot">
+          <span class="eyebrow">Professional snapshot</span>
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>Site Engineer</strong>
+              <span>High-rise construction delivery in Sydney</span>
+            </div>
+            <div class="metric">
+              <strong>ALAND</strong>
+              <span>Current professional role</span>
+            </div>
+            <div class="metric">
+              <strong>MEng Structural</strong>
+              <span>University of Technology Sydney</span>
+            </div>
+            <div class="metric">
+              <strong>On-site learning</strong>
+              <span>Sharing practical engineering insight</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">About</span>
+            <h2>A practical engineering voice shaped by real project work.</h2>
+            <p>
+              JayStructure is a personal platform for documenting what happens between drawings, standards, inspections, sequencing, and actual site execution. It is built around the perspective of a working site engineer who wants to make construction knowledge more useful, direct, and grounded in experience.
+            </p>
+          </div>
+          <p class="quote">
+            “Sharing what I learn on-site” is the right foundation for this brand because the strongest engineering credibility comes from clarity, consistency, and practical judgment.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Career outline</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span>Current</span>
+              <strong>Site Engineer at ALAND</strong>
+              <p>Focused on high-rise construction delivery, coordination, and site-based execution in Sydney.</p>
+            </div>
+            <div class="timeline-item">
+              <span>Education</span>
+              <strong>Master of Engineering, Structural Engineering</strong>
+              <p>University of Technology Sydney.</p>
+            </div>
+            <div class="timeline-item">
+              <span>Brand direction</span>
+              <strong>JayStructure</strong>
+              <p>A professional home for engineering insight, construction articles, and practical site learning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="expertise">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Expertise</span>
+          <h2>Core areas that should define the site.</h2>
+          <p>
+            The best version of this website highlights the intersection of structural understanding, site coordination, quality discipline, and high-rise project execution.
+          </p>
+        </div>
+        <div class="expertise-grid">
+          <article class="card">
+            <h3>Site delivery</h3>
+            <ul>
+              <li>Construction sequencing and day-to-day coordination.</li>
+              <li>Working through live site issues with practical judgment.</li>
+              <li>Keeping delivery aligned with programme, quality, and buildability.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Structural understanding</h3>
+            <ul>
+              <li>Structural engineering background applied to site decisions.</li>
+              <li>Better communication between design intent and construction reality.</li>
+              <li>Clearer interpretation of drawings, details, and execution risks.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Quality and compliance</h3>
+            <ul>
+              <li>Inspections, documentation, and QA-focused site thinking.</li>
+              <li>Attention to compliance, standards, and disciplined construction records.</li>
+              <li>Learning-led approach to better site outcomes and fewer repeated mistakes.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Focus areas</span>
+          <h2>What visitors should expect from JayStructure.</h2>
+          <p>
+            This site can grow beyond a personal profile into a trusted resource for engineers, builders, and construction professionals who want practical knowledge from high-rise project environments.
+          </p>
+        </div>
+        <div class="project-grid">
+          <article class="card">
+            <h3>Engineering insights</h3>
+            <p>Short, clear articles on site problems, lessons learned, construction coordination, and quality thinking that younger engineers can actually use.</p>
+          </article>
+          <article class="card">
+            <h3>High-rise construction learning</h3>
+            <p>Reflections from structural work, site engineering, inspections, sequencing, and the gap between design documentation and field execution.</p>
+          </article>
+          <article class="card">
+            <h3>Professional credibility</h3>
+            <p>A stronger online presence for recruiters, collaborators, and industry connections looking for a Sydney-based engineer with real high-rise exposure.</p>
+          </article>
+          <article class="card">
+            <h3>Future content platform</h3>
+            <p>Room for articles, videos, and construction learning content under one consistent personal brand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container card">
+        <div class="section-head">
+          <span class="eyebrow">Keywords</span>
+          <h2>A sharper professional positioning.</h2>
+          <p>
+            These themes are already strong enough to anchor your homepage, article categories, and future content strategy.
+          </p>
+        </div>
+        <div class="pill-row" aria-label="Professional themes">
+          <span class="pill">High-rise construction</span>
+          <span class="pill">Site engineering</span>
+          <span class="pill">Structural engineering</span>
+          <span class="pill">Sydney projects</span>
+          <span class="pill">Quality assurance</span>
+          <span class="pill">Construction coordination</span>
+          <span class="pill">On-site learning</span>
+          <span class="pill">Professional development</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container cta contact-grid">
+        <div>
+          <span class="eyebrow" style="border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.04);">Contact</span>
+          <div class="section-head" style="margin-bottom: 0; margin-top: var(--space-4);">
+            <h2 style="color: var(--color-text-inverse);">Building a stronger engineering presence online.</h2>
+            <p>
+              Use JayStructure as the place where your professional identity, site knowledge, and future construction content all connect in one clear brand.
+            </p>
+          </div>
+        </div>
+        <div class="hero-actions" style="margin-top: 0;">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/jaysahuts/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+          <a class="btn btn-secondary" href="https://jaystructure.com/" target="_blank" rel="noopener noreferrer">View live site</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> JayStructure · Jay Sah · Sydney, Australia</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const icons = {
+        dark: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>',
+        light: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      };
+      function renderTheme() {
+        root.setAttribute('data-theme', theme);
+        toggle.innerHTML = theme === 'dark' ? icons.dark : icons.light;
+        toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+      }
+      if (toggle) {
+        renderTheme();
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          renderTheme();
+        });
+      }
+      const header = document.querySelector('.site-header');
+      const handleScroll = () => header.classList.toggle('scrolled', window.scrollY > 16);
+      handleScroll();
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
