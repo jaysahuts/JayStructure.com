@@ -1,476 +1,747 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JayStructure | Jay Sah</title>
-  <meta name="description" content="Jay Sah is a Sydney-based site engineer in high-rise construction, sharing practical insights from structural coordination, QA, compliance, and on-site delivery." />
-  <meta property="og:title" content="JayStructure | Jay Sah" />
-  <meta property="og:description" content="Site Engineer | High-Rise Construction Sydney | MEng Structural Engineering | Sharing what I learn on-site." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jaystructure.com/" />
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
-  <style>
-    /* Art direction: high-rise engineering portfolio -> precise, confident, metropolitan.
-       Palette: cool neutral with safety-orange accent inspired by site environments.
-       Typography: Cabinet Grotesk + Satoshi for a sharp professional presence.
-       Density: balanced, spacious in hero and controlled in content sections. */
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.6rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
-      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
-      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
-      --color-bg: #f3f5f7;
-      --color-surface: #fbfcfd;
-      --color-surface-2: #eef2f5;
-      --color-surface-offset: #e6ebef;
-      --color-border: #cbd3da;
-      --color-divider: #d7dde3;
-      --color-text: #16202a;
-      --color-text-muted: #5f6d7a;
-      --color-text-faint: #8d99a5;
-      --color-text-inverse: #f6f8fa;
-      --color-primary: #d46d1f;
-      --color-primary-hover: #b85d18;
-      --color-primary-active: #94480f;
-      --color-primary-highlight: #f0dfcf;
-      --shadow-sm: 0 1px 2px rgba(8, 20, 32, 0.06);
-      --shadow-md: 0 10px 30px rgba(8, 20, 32, 0.09);
-      --shadow-lg: 0 20px 60px rgba(8, 20, 32, 0.14);
-      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.9rem; --radius-xl: 1.25rem; --radius-full: 9999px;
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      --content-default: 1100px;
-      --font-body: 'Satoshi', 'Inter', sans-serif;
-      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
-    }
-    [data-theme="dark"] {
-      --color-bg: #11161c;
-      --color-surface: #171d24;
-      --color-surface-2: #1d242d;
-      --color-surface-offset: #242c36;
-      --color-border: #313a45;
-      --color-divider: #2a323c;
-      --color-text: #e8edf2;
-      --color-text-muted: #a8b2bd;
-      --color-text-faint: #7e8894;
-      --color-text-inverse: #16202a;
-      --color-primary: #f19a4d;
-      --color-primary-hover: #ffac63;
-      --color-primary-active: #ffc58d;
-      --color-primary-highlight: #35281f;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,0.45);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) {
-        --color-bg: #11161c;
-        --color-surface: #171d24;
-        --color-surface-2: #1d242d;
-        --color-surface-offset: #242c36;
-        --color-border: #313a45;
-        --color-divider: #2a323c;
-        --color-text: #e8edf2;
-        --color-text-muted: #a8b2bd;
-        --color-text-faint: #7e8894;
-        --color-text-inverse: #16202a;
-        --color-primary: #f19a4d;
-        --color-primary-hover: #ffac63;
-        --color-primary-active: #ffc58d;
-        --color-primary-highlight: #35281f;
-      }
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: none; text-size-adjust: none; }
-    body {
-      min-height: 100dvh; line-height: 1.6; background: var(--color-bg); color: var(--color-text);
-      font-family: var(--font-body); font-size: var(--text-base);
-      background-image: radial-gradient(circle at top right, rgba(212,109,31,0.12), transparent 24%), linear-gradient(180deg, transparent, rgba(0,0,0,0.02));
-    }
-    img, svg { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { border: 0; background: none; color: inherit; cursor: pointer; }
-    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
-    .skip-link {
-      position: absolute; left: var(--space-4); top: -100px; z-index: 100;
-      background: var(--color-primary); color: #fff; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
-    }
-    .skip-link:focus { top: var(--space-4); }
-    .container { width: min(calc(100% - 2rem), var(--content-default)); margin-inline: auto; }
-    .section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: var(--space-2); padding: 0.4rem 0.8rem;
-      border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text-muted);
-      font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; background: color-mix(in srgb, var(--color-surface) 85%, transparent);
-    }
-    .site-header {
-      position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--color-bg) 86%, transparent); border-bottom: 1px solid transparent;
-    }
-    .site-header.scrolled { border-color: var(--color-divider); }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-      min-height: 76px;
-    }
-    .brand { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700; letter-spacing: 0.02em; }
-    .brand-mark {
-      width: 2.6rem; height: 2.6rem; border-radius: var(--radius-md); background: var(--color-text); color: var(--color-text-inverse);
-      display: grid; place-items: center; box-shadow: var(--shadow-sm);
-    }
-    .brand-mark svg { width: 1.55rem; height: 1.55rem; }
-    .nav-links { display: flex; align-items: center; gap: var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted); }
-    .nav-links a:hover { color: var(--color-text); }
-    .theme-toggle {
-      width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-full);
-      border: 1px solid var(--color-border); background: var(--color-surface);
-    }
-    .hero {
-      padding-top: clamp(var(--space-12), 7vw, var(--space-20));
-      min-height: calc(100dvh - 76px); display: grid; align-items: center;
-    }
-    .hero-grid { display: grid; gap: var(--space-10); }
-    .hero-copy h1 {
-      font-family: var(--font-display); font-size: var(--text-2xl); line-height: 0.98; letter-spacing: -0.04em;
-      max-width: 11ch; margin-top: var(--space-5);
-    }
-    .hero-copy p {
-      margin-top: var(--space-6); max-width: 62ch; color: var(--color-text-muted);
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8); }
-    .btn {
-      min-height: 48px; padding: 0.9rem 1.2rem; border-radius: var(--radius-full); font-size: var(--text-sm);
-      font-weight: 700; transition: all var(--transition-interactive);
-      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
-    }
-    .btn-primary { background: var(--color-primary); color: #fff; box-shadow: var(--shadow-sm); }
-    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
-    .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
-    .btn-secondary:hover { border-color: var(--color-text-faint); }
-    .hero-panel {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 96%, transparent), var(--color-surface-2));
-      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-8);
-      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
-    }
-    .hero-panel::before {
-      content: ""; position: absolute; inset: auto -10% 0 auto; width: 180px; height: 180px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,109,31,0.22), transparent 70%);
-    }
-    .metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-6); }
-    .metric {
-      padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-bg) 40%, transparent);
-      border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
-    }
-    .metric strong { display: block; font-size: var(--text-lg); font-family: var(--font-display); }
-    .metric span { color: var(--color-text-muted); font-size: var(--text-xs); }
-    .section-head { display: grid; gap: var(--space-3); margin-bottom: var(--space-8); }
-    .section-head h2 { font-size: var(--text-xl); line-height: 1.05; font-family: var(--font-display); letter-spacing: -0.03em; }
-    .section-head p { color: var(--color-text-muted); max-width: 62ch; }
-    .about-grid, .expertise-grid, .project-grid, .contact-grid { display: grid; gap: var(--space-6); }
-    .card {
-      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl);
-      padding: var(--space-6); box-shadow: var(--shadow-sm);
-    }
-    .card h3 { font-size: var(--text-lg); line-height: 1.1; margin-bottom: var(--space-3); }
-    .card p, .card li { color: var(--color-text-muted); }
-    .card ul { list-style: none; display: grid; gap: var(--space-3); }
-    .card li { position: relative; padding-left: 1.1rem; }
-    .card li::before {
-      content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--color-primary);
-      position: absolute; left: 0; top: 0.6rem;
-    }
-    .quote {
-      border-left: 3px solid var(--color-primary); padding-left: var(--space-5); color: var(--color-text);
-      font-size: var(--text-lg); line-height: 1.45;
-    }
-    .timeline { display: grid; gap: var(--space-4); }
-    .timeline-item { padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-border); }
-    .timeline-item span { display: inline-block; font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
-    .pill-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-    .pill {
-      padding: 0.65rem 0.95rem; background: var(--color-primary-highlight); color: var(--color-text);
-      border-radius: var(--radius-full); font-size: var(--text-sm); border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
-    }
-    .cta {
-      padding: clamp(var(--space-8), 6vw, var(--space-16)); border-radius: calc(var(--radius-xl) + 0.25rem);
-      background: linear-gradient(135deg, var(--color-text), color-mix(in srgb, var(--color-text) 82%, var(--color-primary) 18%));
-      color: var(--color-text-inverse); box-shadow: var(--shadow-lg);
-    }
-    .cta p { color: color-mix(in srgb, var(--color-text-inverse) 75%, transparent); max-width: 60ch; }
-    .cta .btn-secondary { background: transparent; color: var(--color-text-inverse); border-color: color-mix(in srgb, var(--color-text-inverse) 20%, transparent); }
-    .site-footer {
-      padding: var(--space-8) 0 var(--space-12); color: var(--color-text-muted); font-size: var(--text-sm);
-    }
-    @media (min-width: 900px) {
-      .hero-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
-      .about-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
-      .expertise-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .contact-grid { grid-template-columns: 1fr auto; align-items: center; }
-    }
-    @media (max-width: 760px) {
-      .nav { align-items: flex-start; padding-block: var(--space-4); }
-      .nav-links { flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; }
-      .hero-panel { padding: var(--space-6); }
-      .metric-grid { grid-template-columns: 1fr; }
-      .hero-copy h1 { max-width: 12ch; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .btn { width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-    }
-  </style>
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  <header class="site-header" id="top">
-    <div class="container nav">
-      <a href="#top" class="brand" aria-label="JayStructure home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 18L12 6l7 12" />
-            <path d="M8 18h8" />
-            <path d="M10 14h4" />
-          </svg>
-        </span>
-        <span>JayStructure</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#projects">Focus</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </nav>
-    </div>
-  </header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jay Sah — Site Engineer | High-Rise Construction Sydney</title>
+  <meta name="description" content="Jay Sah is a Site Engineer with 4+ years delivering $300M+ high-rise residential projects in Sydney with Tier 1 and Tier 2 contractors. Master of Engineering (Structural), UTS.">
+  <meta name="keywords" content="site engineer Sydney, structural engineer, high-rise construction, NCC compliance, Jay Sah, jaystructure">
+  <meta name="author" content="Jay Sah">
 
-  <main id="main-content">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Sydney, NSW · High-rise construction</span>
-          <h1>Jay Sah builds clarity from the complexity of site delivery.</h1>
-          <p>
-            Site Engineer at ALAND with a Master of Engineering in Structural Engineering from UTS, sharing practical lessons from high-rise construction, on-site coordination, quality control, and compliance-driven project delivery.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://www.linkedin.com/in/jaysahuts/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
-            <a class="btn btn-secondary" href="#contact">Work with JayStructure</a>
-          </div>
-        </div>
-        <aside class="hero-panel" aria-label="Professional snapshot">
-          <span class="eyebrow">Professional snapshot</span>
-          <div class="metric-grid">
-            <div class="metric">
-              <strong>Site Engineer</strong>
-              <span>High-rise construction delivery in Sydney</span>
-            </div>
-            <div class="metric">
-              <strong>ALAND</strong>
-              <span>Current professional role</span>
-            </div>
-            <div class="metric">
-              <strong>MEng Structural</strong>
-              <span>University of Technology Sydney</span>
-            </div>
-            <div class="metric">
-              <strong>On-site learning</strong>
-              <span>Sharing practical engineering insight</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jay Sah — Site Engineer | High-Rise Construction Sydney">
+  <meta property="og:description" content="4+ years delivering $300M+ high-rise residential and infrastructure projects in Sydney. Master of Engineering (Structural) from UTS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jaystructure.com">
+  <meta property="og:image" content="img/hero-bg.png">
 
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div>
-          <div class="section-head">
-            <span class="eyebrow">About</span>
-            <h2>A practical engineering voice shaped by real project work.</h2>
-            <p>
-              JayStructure is a personal platform for documenting what happens between drawings, standards, inspections, sequencing, and actual site execution. It is built around the perspective of a working site engineer who wants to make construction knowledge more useful, direct, and grounded in experience.
-            </p>
-          </div>
-          <p class="quote">
-            “Sharing what I learn on-site” is the right foundation for this brand because the strongest engineering credibility comes from clarity, consistency, and practical judgment.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Career outline</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <span>Current</span>
-              <strong>Site Engineer at ALAND</strong>
-              <p>Focused on high-rise construction delivery, coordination, and site-based execution in Sydney.</p>
-            </div>
-            <div class="timeline-item">
-              <span>Education</span>
-              <strong>Master of Engineering, Structural Engineering</strong>
-              <p>University of Technology Sydney.</p>
-            </div>
-            <div class="timeline-item">
-              <span>Brand direction</span>
-              <strong>JayStructure</strong>
-              <p>A professional home for engineering insight, construction articles, and practical site learning.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="expertise">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Expertise</span>
-          <h2>Core areas that should define the site.</h2>
-          <p>
-            The best version of this website highlights the intersection of structural understanding, site coordination, quality discipline, and high-rise project execution.
-          </p>
-        </div>
-        <div class="expertise-grid">
-          <article class="card">
-            <h3>Site delivery</h3>
-            <ul>
-              <li>Construction sequencing and day-to-day coordination.</li>
-              <li>Working through live site issues with practical judgment.</li>
-              <li>Keeping delivery aligned with programme, quality, and buildability.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Structural understanding</h3>
-            <ul>
-              <li>Structural engineering background applied to site decisions.</li>
-              <li>Better communication between design intent and construction reality.</li>
-              <li>Clearer interpretation of drawings, details, and execution risks.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Quality and compliance</h3>
-            <ul>
-              <li>Inspections, documentation, and QA-focused site thinking.</li>
-              <li>Attention to compliance, standards, and disciplined construction records.</li>
-              <li>Learning-led approach to better site outcomes and fewer repeated mistakes.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Focus areas</span>
-          <h2>What visitors should expect from JayStructure.</h2>
-          <p>
-            This site can grow beyond a personal profile into a trusted resource for engineers, builders, and construction professionals who want practical knowledge from high-rise project environments.
-          </p>
-        </div>
-        <div class="project-grid">
-          <article class="card">
-            <h3>Engineering insights</h3>
-            <p>Short, clear articles on site problems, lessons learned, construction coordination, and quality thinking that younger engineers can actually use.</p>
-          </article>
-          <article class="card">
-            <h3>High-rise construction learning</h3>
-            <p>Reflections from structural work, site engineering, inspections, sequencing, and the gap between design documentation and field execution.</p>
-          </article>
-          <article class="card">
-            <h3>Professional credibility</h3>
-            <p>A stronger online presence for recruiters, collaborators, and industry connections looking for a Sydney-based engineer with real high-rise exposure.</p>
-          </article>
-          <article class="card">
-            <h3>Future content platform</h3>
-            <p>Room for articles, videos, and construction learning content under one consistent personal brand.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container card">
-        <div class="section-head">
-          <span class="eyebrow">Keywords</span>
-          <h2>A sharper professional positioning.</h2>
-          <p>
-            These themes are already strong enough to anchor your homepage, article categories, and future content strategy.
-          </p>
-        </div>
-        <div class="pill-row" aria-label="Professional themes">
-          <span class="pill">High-rise construction</span>
-          <span class="pill">Site engineering</span>
-          <span class="pill">Structural engineering</span>
-          <span class="pill">Sydney projects</span>
-          <span class="pill">Quality assurance</span>
-          <span class="pill">Construction coordination</span>
-          <span class="pill">On-site learning</span>
-          <span class="pill">Professional development</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container cta contact-grid">
-        <div>
-          <span class="eyebrow" style="border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.04);">Contact</span>
-          <div class="section-head" style="margin-bottom: 0; margin-top: var(--space-4);">
-            <h2 style="color: var(--color-text-inverse);">Building a stronger engineering presence online.</h2>
-            <p>
-              Use JayStructure as the place where your professional identity, site knowledge, and future construction content all connect in one clear brand.
-            </p>
-          </div>
-        </div>
-        <div class="hero-actions" style="margin-top: 0;">
-          <a class="btn btn-primary" href="https://www.linkedin.com/in/jaysahuts/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-          <a class="btn btn-secondary" href="https://jaystructure.com/" target="_blank" rel="noopener noreferrer">View live site</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> JayStructure · Jay Sah · Sydney, Australia</p>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.querySelector('[data-theme-toggle]');
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', theme);
-      const icons = {
-        dark: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>',
-        light: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
-      };
-      function renderTheme() {
-        root.setAttribute('data-theme', theme);
-        toggle.innerHTML = theme === 'dark' ? icons.dark : icons.light;
-        toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
-      }
-      if (toggle) {
-        renderTheme();
-        toggle.addEventListener('click', function () {
-          theme = theme === 'dark' ? 'light' : 'dark';
-          renderTheme();
-        });
-      }
-      const header = document.querySelector('.site-header');
-      const handleScroll = () => header.classList.toggle('scrolled', window.scrollY > 16);
-      handleScroll();
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jay Sah",
+    "jobTitle": "Site Engineer",
+    "description": "Site Engineer specializing in high-rise residential construction in Sydney, Australia",
+    "url": "https://jaystructure.com",
+    "sameAs": ["https://www.linkedin.com/in/jay-sah", "https://www.youtube.com/@JayStructure"],
+    "address": {"@type": "PostalAddress", "addressLocality": "Sydney", "addressRegion": "NSW", "addressCountry": "AU"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Technology Sydney"}
+  }
   </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="img/hero-bg.png" as="image">
+</head>
+
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#home" class="header__logo" aria-label="Jay Structure Home">
+      <!-- SVG Logo: JS monogram with structural beam motif -->
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="8" fill="currentColor" fill-opacity="0.1"/>
+        <rect x="0.5" y="0.5" width="35" height="35" rx="7.5" stroke="currentColor" stroke-opacity="0.2"/>
+        <!-- Horizontal structural beam top -->
+        <rect x="8" y="10" width="20" height="2.5" rx="1" fill="#e8950f"/>
+        <!-- J vertical -->
+        <rect x="16" y="10" width="2.5" height="14" rx="1" fill="#e8950f"/>
+        <!-- J hook -->
+        <path d="M12 21.5 Q12 24.5 16 24.5" stroke="#e8950f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- S curves -->
+        <path d="M20 15.5 Q26 15 26 18 Q26 21 20 21.5" stroke="#e8950f" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- Horizontal structural beam bottom -->
+        <rect x="8" y="23.5" width="20" height="2.5" rx="1" fill="#e8950f" fill-opacity="0.4"/>
+      </svg>
+      <span class="header__logo-text">Jay<span>Structure</span></span>
+    </a>
+
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <ul class="nav__links" role="list">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#expertise" class="nav__link">Expertise</a></li>
+        <li><a href="#experience" class="nav__link">Experience</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__controls">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+          <!-- Sun icon (shown in dark mode to switch to light) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+        <a href="#contact" class="nav__cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.59 2 2 0 0 1 3.56 1.41h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.67-1.79a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hire Me
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="hero__bg">
+    <img src="img/hero-bg.png" alt="High-rise construction site in Sydney with steel structure and cranes at golden hour" class="hero__bg-img" loading="eager">
+    <div class="hero__overlay"></div>
+  </div>
+  <div class="hero__grid-lines" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <div class="hero__text">
+      <p class="hero__eyebrow">Site Engineer · Sydney, Australia</p>
+      <h1 class="hero__name">Jay<span>Sah</span></h1>
+      <p class="hero__role">Building the skyline,<br>one level at a time.</p>
+      <p class="hero__tagline">4+ years delivering $300M+ high-rise residential and infrastructure projects with Tier 1 &amp; Tier 2 contractors. Master of Engineering (Structural) — UTS.</p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn--outline">
+          Get in Touch
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__stats" role="list">
+      <div class="hero__stat-card reveal" role="listitem">
+        <div class="hero__stat-number">$300M+</div>
+        <div class="hero__stat-label">Projects Delivered</div>
+        <div class="hero__stat-desc">High-rise residential &amp; infrastructure, Sydney</div>
+      </div>
+      <div class="hero__stat-card reveal reveal--delay-1" role="listitem">
+        <div class="hero__stat-number">4+</div>
+        <div class="hero__stat-label">Years Experience</div>
+        <div class="hero__stat-desc">Tier 1 &amp; Tier 2 contractors</div>
+      </div>
+      <div class="hero__stat-card reveal reveal--delay-2" role="listitem">
+        <div class="hero__stat-number">500+</div>
+        <div class="hero__stat-label">Apartments Overseen</div>
+        <div class="hero__stat-desc">Structure · Facade · Fitout</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about__layout">
+      <div class="about__image-wrap reveal">
+        <div class="about__image-frame">
+          <img src="img/about-engineer.png" alt="Jay Sah, Site Engineer reviewing blueprints on a high-rise construction site in Sydney with Opera House and Harbour Bridge in background" class="about__img" loading="lazy">
+          <div class="about__badge">
+            <div class="about__badge-role">Site Engineer</div>
+            <div class="about__badge-company">ALAND · Castle Hill, Sydney</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about__content">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">About Me</p>
+          <h2 class="section-title" id="about-title">Turning structural plans into reality, at height.</h2>
+        </div>
+
+        <p class="about__intro reveal">
+          I'm Jay Sah — a Site Engineer based in Sydney with a Master of Engineering (Structural) from UTS, specialising in the full delivery lifecycle of high-rise residential and mixed-use developments.
+        </p>
+        <p class="about__body reveal">
+          From deep excavation and raft foundations through to structural frames, facade systems, and internal fitout, I manage every critical stage on-site. I work closely with subcontractors, project managers, and inspectors to ensure works are delivered to the highest standards of quality, safety, and NCC compliance — without compromising programme.
+        </p>
+        <p class="about__body reveal">
+          My background bridges both structural theory and practical site delivery, giving me the ability to read complex engineering drawings, identify risks early, and coordinate multi-trade interfaces effectively. I thrive in fast-paced environments where precision matters.
+        </p>
+
+        <div class="about__highlights reveal">
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="highlight-text">
+              <strong>Master of Engineering (Structural)</strong>
+              <span>University of Technology Sydney (UTS) · Distinction</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="highlight-text">
+              <strong>ALAND Development — Skyview Project</strong>
+              <span>Castle Hill, Sydney · High-rise residential, 400+ apartments</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+            </div>
+            <div class="highlight-text">
+              <strong>NCC 2022 &amp; 2025 / Australian Standards</strong>
+              <span>AS 3600, AS 3700, AS 3500 · QA/ITP Management</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="highlight-text">
+              <strong>Tier 1 &amp; Tier 2 Contractor Experience</strong>
+              <span>Power Construction Corporation of China · ALAND</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__actions reveal">
+          <a href="#contact" class="btn btn--primary">Contact Me</a>
+          <a href="https://linkedin.com/in/jay-sah" target="_blank" rel="noopener" class="btn btn--outline-dark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERTISE / SKILLS
+     ============================================================ -->
+<section class="section section--dark" id="expertise" aria-labelledby="expertise-title">
+  <div class="container">
+    <div class="section-header--centered reveal">
+      <p class="section-eyebrow">Technical Expertise</p>
+      <h2 class="section-title" id="expertise-title">Built for complexity. Engineered for delivery.</h2>
+      <p class="section-sub">A complete skill set covering every stage of high-rise construction, from ground to rooftop.</p>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Card 1 -->
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="skill-card__title">Structural Construction</h3>
+        <p class="skill-card__body">Post-tensioned slabs, reinforced concrete frames, core walls, transfer plates, podium structures. End-to-end delivery from formwork to strip.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">PT Slabs</span>
+          <span class="tag">Rebar</span>
+          <span class="tag">Formwork</span>
+          <span class="tag">Core Walls</span>
+          <span class="tag">Transfers</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="skill-card reveal reveal--delay-1">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3 class="skill-card__title">Facade &amp; Envelope</h3>
+        <p class="skill-card__body">Curtain wall, aluminium cladding, window systems, waterproofing membranes, external rendering, and balcony waterproofing compliance.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">Curtain Wall</span>
+          <span class="tag">Waterproofing</span>
+          <span class="tag">Cladding</span>
+          <span class="tag">Balconies</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="skill-card reveal reveal--delay-2">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+        </div>
+        <h3 class="skill-card__title">QA/QC &amp; Compliance</h3>
+        <p class="skill-card__body">Inspection and Test Plans (ITPs), hold points, witness points, NCRs, defect management, and full NCC 2016/2022/2025 compliance oversight.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">ITP Management</span>
+          <span class="tag">NCC 2025</span>
+          <span class="tag">NCRs</span>
+          <span class="tag">AS 3600</span>
+          <span class="tag">AS 3700</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="skill-card reveal reveal--delay-3">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="skill-card__title">Subcontractor Coordination</h3>
+        <p class="skill-card__body">Multi-trade interface management across structural, mechanical, electrical, plumbing, facade, and fitout packages on 500+ apartment projects.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">Trade Interfaces</span>
+          <span class="tag">Programme</span>
+          <span class="tag">RFIs</span>
+          <span class="tag">Shop Drawings</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="skill-card reveal reveal--delay-4">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="skill-card__title">Documentation &amp; Reporting</h3>
+        <p class="skill-card__body">Construction documentation, site instructions, progress reporting, drawing reviews, variation tracking, and digital document control via Procore and Bluebeam.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">Procore</span>
+          <span class="tag">Bluebeam</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">Variations</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="skill-card reveal reveal--delay-5">
+        <div class="skill-card__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3 class="skill-card__title">Structural Engineering</h3>
+        <p class="skill-card__body">Structural analysis and design using ETABS, SAP2000, and RAPT. Concrete design to AS 3600, masonry to AS 3700, and geotechnical assessment.</p>
+        <div class="skill-tags">
+          <span class="tag tag--primary">ETABS</span>
+          <span class="tag">RAPT</span>
+          <span class="tag">SAP2000</span>
+          <span class="tag">AS 3600</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools Section -->
+    <div class="tools-section mt-8 reveal">
+      <div class="tools-group">
+        <p class="tools-group__title">Engineering Software</p>
+        <ul class="tools-list" role="list">
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>ETABS</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>SAP2000</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>RAPT</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AutoCAD</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>Revit</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>Bluebeam</li>
+        </ul>
+      </div>
+      <div class="tools-group">
+        <p class="tools-group__title">Project Management</p>
+        <ul class="tools-list" role="list">
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>Procore</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>Aconex</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>Microsoft Project</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>SharePoint</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>MS Office Suite</li>
+        </ul>
+      </div>
+      <div class="tools-group">
+        <p class="tools-group__title">Standards &amp; Codes</p>
+        <ul class="tools-list" role="list">
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>NCC 2016 / 2022 / 2025</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AS 3600</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AS 3700</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AS 3500</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AS 1170</li>
+          <li class="tool-item"><span class="tool-dot" aria-hidden="true"></span>AS 1428</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="container container--narrow">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Career History</p>
+      <h2 class="section-title" id="experience-title">From cadet to delivering<br>$300M+ towers.</h2>
+    </div>
+
+    <div class="timeline">
+      <!-- Role 1 — Current -->
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
+          <span class="timeline-period">2023 — Present</span>
+          <span class="timeline-badge">Current Role</span>
+        </div>
+        <h3 class="timeline-title">Site Engineer</h3>
+        <p class="timeline-company">ALAND Development · Castle Hill, Sydney NSW</p>
+        <p class="timeline-body">Leading on-site engineering delivery for the Skyview Project — a major high-rise residential development of 400+ apartments in Castle Hill. Responsible for structural, facade, and fitout stage delivery with full QA and compliance management.</p>
+        <ul class="timeline-bullets">
+          <li>Managed post-tensioned slab construction, reinforced concrete cores, and podium structure across multiple levels simultaneously</li>
+          <li>Coordinated facade package including curtain wall, cladding, and external waterproofing systems with full NCC compliance</li>
+          <li>Administered Inspection and Test Plans (ITPs), hold points, and defect registers using Procore</li>
+          <li>Liaised with certifiers, structural engineers, and building surveyors for inspection sign-offs</li>
+          <li>Managed multi-trade interfaces across structural, MEP, facade, and fitout subcontractors</li>
+          <li>Reviewed and actioned RFIs, shop drawings, and engineering variations to maintain programme</li>
+        </ul>
+      </article>
+
+      <!-- Role 2 -->
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
+          <span class="timeline-period">2020 — 2023</span>
+        </div>
+        <h3 class="timeline-title">Site Engineer (Cadet to Graduate)</h3>
+        <p class="timeline-company">Power Construction Corporation of China · Sydney NSW</p>
+        <p class="timeline-body">Progressed from cadet engineer through to site engineer on large-scale high-rise and infrastructure projects. Gained hands-on experience across the full construction lifecycle under senior mentorship.</p>
+        <ul class="timeline-bullets">
+          <li>Assisted in structural works including reinforced concrete frames, transfer slabs, and retaining walls</li>
+          <li>Conducted daily site inspections, quality audits, and maintained site diary records</li>
+          <li>Supported QA/QC programme including ITP management, NCR preparation, and close-out tracking</li>
+          <li>Prepared and reviewed construction documentation, daily progress reports, and method statements</li>
+          <li>Developed expertise in NCC 2016/2019 compliance and Australian Standards including AS 3600 and AS 1170</li>
+          <li>Coordinated material deliveries, subcontractor scheduling, and site logistics</li>
+        </ul>
+      </article>
+
+      <!-- Education -->
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
+          <span class="timeline-period">2021 — 2024</span>
+          <span class="timeline-badge">Education</span>
+        </div>
+        <h3 class="timeline-title">Master of Engineering (Structural)</h3>
+        <p class="timeline-company">University of Technology Sydney (UTS) · Distinction</p>
+        <p class="timeline-body">Advanced study in structural analysis, concrete design, geotechnical engineering, and construction project management. Graduated with Distinction, combining academic rigour with active site engineering practice.</p>
+        <ul class="timeline-bullets">
+          <li>Advanced structural analysis and design using ETABS, SAP2000, and RAPT</li>
+          <li>Concrete design to AS 3600, masonry design to AS 3700, and wind/earthquake loading to AS 1170</li>
+          <li>Construction project management, risk assessment, and procurement</li>
+          <li>Geotechnical engineering and foundation design</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Certifications -->
+    <div class="mt-8">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Education &amp; Credentials</p>
+        <h3 class="section-title" style="font-size: var(--text-xl);">Qualifications</h3>
+      </div>
+      <div class="cert-grid reveal">
+        <div class="cert-card">
+          <div class="cert-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <p class="cert-card__title">Master of Engineering (Structural)</p>
+            <p class="cert-card__sub">University of Technology Sydney (UTS)</p>
+            <p class="cert-card__year">Distinction · 2021–2024</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <p class="cert-card__title">White Card — Construction Induction</p>
+            <p class="cert-card__sub">SafeWork NSW · General Construction</p>
+            <p class="cert-card__year">Certified</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+          </div>
+          <div>
+            <p class="cert-card__title">NCC 2022 / 2025 Compliance</p>
+            <p class="cert-card__sub">National Construction Code · BCA Volumes 1 &amp; 2</p>
+            <p class="cert-card__year">Expert Practitioner</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <p class="cert-card__title">Procore Certified</p>
+            <p class="cert-card__sub">Construction Management Platform</p>
+            <p class="cert-card__year">Project Management · QA/QC</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="section section--dark" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="section-header--centered reveal">
+      <p class="section-eyebrow">Featured Projects</p>
+      <h2 class="section-title" id="projects-title">High-rise delivery at scale.</h2>
+      <p class="section-sub">Selected projects from my career spanning structure, facade, and fitout delivery across Sydney's most ambitious residential developments.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Featured Project -->
+      <article class="project-card project-card--featured reveal">
+        <div class="project-card__img-wrap">
+          <img src="img/project-skyview.png" alt="Skyview high-rise residential tower in Castle Hill, Sydney — completed modern glass and concrete facade" class="project-card__img" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--primary">Current Project</span>
+            <span class="tag">Residential</span>
+            <span class="tag">High-Rise</span>
+          </div>
+          <p class="project-card__meta">Castle Hill · Sydney NSW · 2023–Present</p>
+          <h3 class="project-card__title">Skyview — ALAND Development</h3>
+          <p class="project-card__desc">A landmark high-rise residential development in Sydney's Hills District. As Site Engineer, I'm responsible for structural frame delivery, facade package, and fitout stage coordination across the 400+ apartment tower. Managing multi-trade interfaces, ITP compliance, and programme delivery with Tier 2 principal contractor.</p>
+          <div class="project-card__stats">
+            <div class="project-stat">
+              <div class="project-stat__num">400+</div>
+              <div class="project-stat__label">Apartments</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat__num">$150M+</div>
+              <div class="project-stat__label">Project Value</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat__num">25+</div>
+              <div class="project-stat__label">Levels</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card reveal reveal--delay-1">
+        <div class="project-card__img-wrap">
+          <img src="img/project-structure.png" alt="Aerial view of reinforced concrete foundation and rebar installation for a major high-rise project" class="project-card__img" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">Infrastructure</span>
+            <span class="tag">Structural</span>
+          </div>
+          <p class="project-card__meta">Sydney NSW · 2020–2023</p>
+          <h3 class="project-card__title">High-Rise Structural Package</h3>
+          <p class="project-card__desc">Structural frame delivery including deep excavation, piled foundations, raft slab, and multi-level post-tensioned slab construction on a $150M+ infrastructure project with Power Construction Corporation of China.</p>
+          <div class="project-card__stats">
+            <div class="project-stat">
+              <div class="project-stat__num">$150M+</div>
+              <div class="project-stat__label">Value</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat__num">3yr</div>
+              <div class="project-stat__label">Duration</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card reveal reveal--delay-2">
+        <div class="project-card__img-wrap" style="background: linear-gradient(135deg, #1a1c22 0%, #0e1018 100%); display:flex; align-items:center; justify-content:center; aspect-ratio:16/10;">
+          <div style="text-align:center; padding: var(--space-8);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e8950f" stroke-width="1.5" stroke-linecap="round" style="margin: 0 auto var(--space-4);" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <p style="font-family: var(--font-display); font-size: var(--text-lg); font-weight:600; color:#c8cad0;">ITP &amp; QA System</p>
+            <p style="font-size: var(--text-xs); color:#5a5d66; margin-top: var(--space-2);">Documentation Framework</p>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">QA/QC</span>
+            <span class="tag">Documentation</span>
+          </div>
+          <p class="project-card__meta">Sydney · Ongoing</p>
+          <h3 class="project-card__title">ITP &amp; Quality Management Framework</h3>
+          <p class="project-card__desc">Developed and implemented comprehensive Inspection and Test Plans across structural, waterproofing, facade, and fitout packages. Reduced defect rates and improved first-pass inspection rates significantly.</p>
+          <div class="project-card__stats">
+            <div class="project-stat">
+              <div class="project-stat__num">500+</div>
+              <div class="project-stat__label">ITPs Managed</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat__num">NCC</div>
+              <div class="project-stat__label">Compliant</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTENT / YOUTUBE
+     ============================================================ -->
+<section class="section" aria-labelledby="content-title">
+  <div class="container">
+    <div class="about__layout">
+      <div class="about__content">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Content &amp; Community</p>
+          <h2 class="section-title" id="content-title">Sharing what site engineering really looks like.</h2>
+        </div>
+        <p class="about__body reveal">
+          Beyond the construction site, I create practical engineering content for aspiring site engineers, graduate engineers, and construction professionals — covering real on-site workflows, QA/QC processes, NCC compliance, and the tools that make modern project delivery work.
+        </p>
+        <p class="about__body reveal">
+          My YouTube channel @JayStructure covers high-rise construction from structure to facade, inspection processes, defect management, and how to navigate Australian Standards on real projects.
+        </p>
+        <div class="about__actions reveal">
+          <a href="https://youtube.com/@JayStructure" target="_blank" rel="noopener" class="btn btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0e1018"/></svg>
+            @JayStructure on YouTube
+          </a>
+          <a href="https://linkedin.com/in/jay-sah" target="_blank" rel="noopener" class="btn btn--outline-dark">LinkedIn</a>
+        </div>
+      </div>
+      <div class="about__image-wrap reveal">
+        <div style="background: linear-gradient(135deg, #1a1c22, #0e1018); border-radius: var(--radius-lg); padding: var(--space-10); border: 1px solid var(--color-border); display:flex; flex-direction:column; gap: var(--space-6);">
+          <div style="display:flex; align-items:center; gap: var(--space-4);">
+            <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0e1018"/></svg>
+            </div>
+            <div>
+              <p style="font-family:var(--font-display);font-weight:600;color:var(--color-text);">@JayStructure</p>
+              <p style="font-size:var(--text-xs);color:var(--color-text-muted);">YouTube Channel</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="padding:var(--space-4);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);">
+              <p style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-1);">High-Rise Construction Workflows</p>
+              <p style="font-size:var(--text-xs);color:var(--color-text-muted);">Structure to facade delivery — real on-site examples</p>
+            </div>
+            <div style="padding:var(--space-4);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);">
+              <p style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-1);">QA/QC Processes &amp; ITP Management</p>
+              <p style="font-size:var(--text-xs);color:var(--color-text-muted);">NCC/AS compliance on Australian projects</p>
+            </div>
+            <div style="padding:var(--space-4);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);">
+              <p style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-1);">Digital Tools for Engineers</p>
+              <p style="font-size:var(--text-xs);color:var(--color-text-muted);">Procore, AutoCAD, Bluebeam &amp; AI workflows</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="contact-section section" id="contact" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div class="contact-layout">
+      <div>
+        <p class="section-eyebrow" style="color: var(--color-primary);">Get In Touch</p>
+        <h2 class="contact-title" id="contact-title">Let's build something<br><span>great together.</span></h2>
+        <p class="contact-desc">Whether you're looking for an experienced Site Engineer, want to discuss a project, or are interested in sponsorship — I'd love to connect.</p>
+
+        <div class="contact-links reveal">
+          <a href="mailto:jay.s.sah@student.uts.edu.au" class="contact-link">
+            <div class="contact-link__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <span class="contact-link__label">Email</span>
+              <span class="contact-link__value">jay.s.sah@student.uts.edu.au</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/jay-sah" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <span class="contact-link__label">LinkedIn</span>
+              <span class="contact-link__value">linkedin.com/in/jay-sah</span>
+            </div>
+          </a>
+          <a href="https://youtube.com/@JayStructure" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0e1018"/></svg>
+            </div>
+            <div>
+              <span class="contact-link__label">YouTube</span>
+              <span class="contact-link__value">@JayStructure</span>
+            </div>
+          </a>
+          <div class="contact-link" style="cursor:default;">
+            <div class="contact-link__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span class="contact-link__label">Location</span>
+              <span class="contact-link__value">Sydney, NSW · Australia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your full name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="e.g. Sponsorship, Project Opportunity">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send Message
+          </button>
+          <p id="form-status" style="font-size:var(--text-xs);margin-top:var(--space-3);text-align:center;color:var(--color-text-muted);display:none;"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <span class="footer__brand">Jay<span>Structure</span> · Sydney NSW</span>
+      <span class="footer__copy">&copy; 2026 Jay Sah · All rights reserved</span>
+      <ul class="footer__links" role="list">
+        <li><a href="https://linkedin.com/in/jay-sah" target="_blank" rel="noopener" class="footer__link">LinkedIn</a></li>
+        <li><a href="https://youtube.com/@JayStructure" target="_blank" rel="noopener" class="footer__link">YouTube</a></li>
+        <li><a href="mailto:jay.s.sah@student.uts.edu.au" class="footer__link">Email</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script src="js/main.js" defer></script>
 </body>
 </html>
